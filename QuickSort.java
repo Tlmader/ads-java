@@ -1,7 +1,7 @@
 import java.math.*;
 import java.util.*;
 
-public class QuickSort {
+public class Quicksort {
 
   private static Scanner input;
   private static boolean debug = true;
@@ -13,11 +13,11 @@ public class QuickSort {
     for (int i = 0; i < nums.length; i++) {
       nums[i] = Integer.parseInt(strs[i]);
     }
-    nums = quickSort(nums, 0, nums.length - 1);
+    nums = quicksort(nums, 0, nums.length - 1);
     printCase(x, Arrays.toString(nums));
   }
 
-  public static int[] quickSort(int[] nums, int low, int high) {
+  public static int[] quicksort(int[] nums, int low, int high) {
     if (nums == null || nums.length == 0) {
       return null;
     }
@@ -41,10 +41,10 @@ public class QuickSort {
       }
     }
     if (low < j) {
-      nums = quickSort(nums, low, j);
+      nums = quicksort(nums, low, j);
     }
     if (i < high) {
-      nums = quickSort(nums, i, high);
+      nums = quicksort(nums, i, high);
     }
     return nums;
   }
