@@ -4,7 +4,6 @@ import java.util.*;
 public class Quicksort {
 
   private static Scanner input;
-  private static boolean debug = true;
   private static Random rnd;
 
   public static void testCase(int x) {
@@ -14,7 +13,7 @@ public class Quicksort {
       nums[i] = Integer.parseInt(strs[i]);
     }
     nums = quicksort(nums, 0, nums.length - 1);
-    printCase(x, Arrays.toString(nums));
+    System.out.println("Case #" + x + ": " + Arrays.toString(nums));
   }
 
   public static int[] quicksort(int[] nums, int low, int high) {
@@ -35,7 +34,6 @@ public class Quicksort {
           int temp = nums[i];
           nums[i] = nums[j];
           nums[j] = temp;
-          log(nums[i] + " <-> " + nums[j] + ": " + Arrays.toString(nums));
           i++;
           j--;
       }
@@ -49,30 +47,10 @@ public class Quicksort {
     return nums;
   }
 
-  public static int parseIntFromLine() {
-    return Integer.parseInt(input.nextLine());
-  }
-
-  public static void printCase(int num, Object result) {
-    System.out.println("Case #" + num + ": " + result);
-  }
-
-  public static void log(String message) {
-    if (debug) {
-      System.out.println("LOG: " + message);
-    }
-  }
-
-  public static void logNoBreak(String message) {
-    if (debug) {
-      System.out.print(message);
-    }
-  }
-
   public static void main(String[] args) {
     input = new Scanner(System.in);
     rnd = new Random();
-    int x = parseIntFromLine();
+    int x = Integer.parseInt(input.nextLine());
     for (int i = 1; i <= x; i++) {
       testCase(i);
     }
