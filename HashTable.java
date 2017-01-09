@@ -18,7 +18,7 @@ public class HashTable {
       table.put(key, value);
     }
     for (int i = 0; i < n; i++) {
-      System.out.println("Case " + x + ", Entry " + i + ": " + table.get(keys[i]));
+      System.out.println("Case " + x + ", Entry " + i + ": Key: " + keys[i] + ", Value: " + table.get(keys[i]));
     }
   }
 
