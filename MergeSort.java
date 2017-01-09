@@ -4,7 +4,6 @@ import java.util.*;
 public class MergeSort {
 
   private static Scanner input;
-  private static Random rnd;
 
   public static void testCase(int x) {
     String[] strs = input.nextLine().split(" ");
@@ -45,7 +44,6 @@ public class MergeSort {
 
   public static void main(String[] args) {
     input = new Scanner(System.in);
-    rnd = new Random();
     int x = Integer.parseInt(input.nextLine());
     for (int i = 1; i <= x; i++) {
       testCase(i);
