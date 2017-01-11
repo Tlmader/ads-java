@@ -29,6 +29,7 @@ public class RedBlackTree {
 
     }
 
+
     private final int compare(Comparable item, Node t) {
       if (t == head) {
         return 1;
@@ -40,26 +41,26 @@ public class RedBlackTree {
     private Node getNullNode() {
       return new Node(null);
     }
-  }
 
-  private static class Node {
+    private static class Node {
 
-    Comparable element;
-    Node left;
-    Node right;
-    int color;
+      Comparable element;
+      Node left;
+      Node right;
+      int color;
 
-    private static final int BLACK = 1;
-    private static final int RED = 0;
+      private static final int BLACK = 1;
+      private static final int RED = 0;
 
-    Node(Comparable element) {
-      this(element, null, null);
-    }
+      Node(Comparable element) {
+        this(element, null, null);
+      }
 
-    Node(Comparable element, Node left, Node right) {
-      this.left = left;
-      this.right = right;
-      color = BLACK;
+      Node(Comparable element, Node left, Node right) {
+        this.left = left;
+        this.right = right;
+        color = BLACK;
+      }
     }
   }
 }

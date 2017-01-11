@@ -64,24 +64,24 @@ public class HashTable {
     private int collision(int h) {
       return (h + 1) % entries.length;
     }
-  }
 
-  private static class Entry {
+    private static class Entry {
 
-    private int key;
-    private int value;
+      private int key;
+      private int value;
 
-    Entry(int key, int value) {
-      this.key = key;
-      this.value = value;
-    }
+      Entry(int key, int value) {
+        this.key = key;
+        this.value = value;
+      }
 
-    int getKey() {
-      return this.key;
-    }
+      int getKey() {
+        return this.key;
+      }
 
-    int getValue() {
-      return this.value;
+      int getValue() {
+        return this.value;
+      }
     }
   }
 }
