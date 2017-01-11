@@ -25,10 +25,11 @@ public class RedBlackTree {
 
     private Node head;
 
+    private final Node NULL_NODE = new Node(null);
+
     Tree() {
 
     }
-
 
     private final int compare(Comparable item, Node t) {
       if (t == head) {
@@ -38,8 +39,60 @@ public class RedBlackTree {
       }
     }
 
-    private Node getNullNode() {
-      return new Node(null);
+    void insert(Comparable item) {
+
+    }
+
+    void remove(Comparable item) {
+
+    }
+
+    Comparable find(Comparable item) {
+      return null;
+    }
+
+    Comparable findMin() {
+      return null;
+    }
+
+    Comparable findMax() {
+      return null;
+    }
+
+    void reorient(Comparable item) {
+
+    }
+
+    Node rotate(Comparable item, Node parent) {
+
+    }
+
+    private Node rotateWithleft(Node parent) {
+
+    }
+
+    private Node rotateWithRight(Node parent) {
+
+    }
+
+    boolean isEmpty() {
+      return head.right == NULL_NODE;
+    }
+
+    void makeEmpty() {
+
+    }
+
+    void printTree() {
+      printTree(head.right);
+    }
+
+    private void printTree(Node t) {
+      if (t != NULL_NODE) {
+        printTree(t.left);
+        System.out.println(t.element);
+        printTree(t.right);
+      }
     }
 
     private static class Node {
