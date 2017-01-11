@@ -29,60 +29,60 @@ public class HashTable {
       testCase(i);
     }
   }
-}
 
-class Table {
+  private static class Table {
 
-  private Entry[] entries;
+    private Entry[] entries;
 
-  public Table(int size) {
-    entries = new Entry[size];
-  }
-
-  public int get(int key) {
-    int h = hash(key);
-    while (entries[h] != null && entries[h].getKey() != key) {
-      h = collision(h);
+    Table(int size) {
+      entries = new Entry[size];
     }
-    if (entries[h] == null) {
-      return -1;
-    } else {
-      return entries[h].getValue();
+
+    int get(int key) {
+      int h = hash(key);
+      while (entries[h] != null && entries[h].getKey() != key) {
+        h = collision(h);
+      }
+      if (entries[h] == null) {
+        return -1;
+      } else {
+        return entries[h].getValue();
+      }
+    }
+
+    void put(int key, int value) {
+      int h = hash(key);
+      while (entries[h] != null && entries[h].getKey() != key) {
+        h = collision(h);
+      }
+      entries[h] = new Entry(key, value);
+    }
+
+    private int hash(int key) {
+      return key % entries.length;
+    }
+
+    private int collision(int h) {
+      return (h + 1) % entries.length;
     }
   }
 
-  public void put(int key, int value) {
-    int h = hash(key);
-    while (entries[h] != null && entries[h].getKey() != key) {
-      h = collision(h);
+  private static class Entry {
+
+    private int key;
+    private int value;
+
+    Entry(int key, int value) {
+      this.key = key;
+      this.value = value;
     }
-    entries[h] = new Entry(key, value);
-  }
 
-  private int hash(int key) {
-    return key % entries.length;
-  }
+    int getKey() {
+      return this.key;
+    }
 
-  private int collision(int h) {
-    return (h + 1) % entries.length;
-  }
-}
-
-class Entry {
-
-  private int key;
-  private int value;
-
-  public Entry(int key, int value) {
-    this.key = key;
-    this.value = value;
-  }
-
-  public int getKey() {
-    return this.key;
-  }
-
-  public int getValue() {
-    return this.value;
+    int getValue() {
+      return this.value;
+    }
   }
 }
