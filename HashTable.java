@@ -2,8 +2,8 @@ import java.util.*;
 
 public class HashTable {
 
-private static Scanner input;
-private static final int TABLE_SIZE = 128;
+  private static Scanner input;
+  private static final int TABLE_SIZE = 128;
 
   private Entry[] entries;
 
@@ -39,7 +39,7 @@ private static final int TABLE_SIZE = 128;
     return (h + 1) % entries.length;
   }
 
-  private static class Entry {
+  private class Entry {
 
     private int key;
     private int value;
