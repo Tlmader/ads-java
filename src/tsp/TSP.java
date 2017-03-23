@@ -4,38 +4,38 @@ import java.util.Random;
 public class TSP {
 
   static int totalCities = 10;
-  static City[] cities;
   static Random rnd;
 
-  private static void setup() {
-    cities = new City[totalCities];
+  private static City[] setup() {
+    City[] cities = new City[totalCities];
     for (int i = 0; i < cities.length; i++) {
       cities[i] = new City(rnd.nextInt(100), rnd.nextInt(100));
     }
+    return cities;
   }
 
-  static void swap(int i, int j) {
+  static City[] swap(City[] cities, int i, int j) {
     City temp = cities[i];
     cities[i] = cities[j];
     cities[j] = temp;
+    return cities;
   }
 
-  static void solve(int iters) {
+  static City[] solveWithRandomSwap(City[] cities, int iters) {
     int min = Integer.MAX_VALUE;
     City[] best = null;
     for (int i = 0; i < iters; i++) {
-      swap(rnd.nextInt(cities.length), rnd.nextInt(cities.length));
-      int distance = calcDistance();
-      print();
+      swap(cities, rnd.nextInt(cities.length), rnd.nextInt(cities.length));
+      int distance = calcDistance(cities);
       if (distance < min) {
         min = distance;
         best = cities.clone();
       }
     }
-    cities = best;
+    return best;
   }
 
-  static int calcDistance() {
+  static int calcDistance(City[] cities) {
     int distance = 0;
     for (int i = 0; i < cities.length - 1; i++) {
       distance += Math.sqrt(Math.pow(cities[i].x - cities[i + 1].x, 2) +
@@ -46,19 +46,18 @@ public class TSP {
     return distance;
   }
 
-  static void print() {
+  static void print(City[] cities) {
     for (City c : cities) {
       System.out.println(c.toString());
     }
-    System.out.println(calcDistance());
+    System.out.println(calcDistance(cities));
   }
 
   public static void main(String[] args) {
     rnd = new Random();
-    setup();
-    solve(10000);
-    System.out.println("Shortest path found:");
-    print();
+    City[] cities = setup();
+    System.out.println("Shortest path found with random swap:");
+    print(solveWithRandomSwap(cities, 10000));
   }
 }
 
