@@ -1,12 +1,13 @@
 import java.util.Random;
 
+@SuppressWarnings("WrongPackageStatement")
 public class TSP {
 
-  static int totalCities = 3;
+  static int totalCities = 10;
   static City[] cities;
   static Random rnd;
 
-  static void setup() {
+  private static void setup() {
     cities = new City[totalCities];
     for (int i = 0; i < cities.length; i++) {
       cities[i] = new City(rnd.nextInt(100), rnd.nextInt(100));
@@ -19,21 +20,45 @@ public class TSP {
     cities[j] = temp;
   }
 
-  static void solve() {
-
+  static void solve(int iters) {
+    int min = Integer.MAX_VALUE;
+    City[] best = null;
+    for (int i = 0; i < iters; i++) {
+      swap(rnd.nextInt(cities.length), rnd.nextInt(cities.length));
+      int distance = calcDistance();
+      print();
+      if (distance < min) {
+        min = distance;
+        best = cities.clone();
+      }
+    }
+    cities = best;
   }
 
   static int calcDistance() {
-    return 0;
+    int distance = 0;
+    for (int i = 0; i < cities.length - 1; i++) {
+      distance += Math.sqrt(Math.pow(cities[i].x - cities[i + 1].x, 2) +
+                            Math.pow(cities[i].y - cities[i + 1].y, 2));
+    }
+    distance += Math.sqrt(Math.pow(cities[0].x - cities[cities.length - 1].x, 2) +
+        Math.pow(cities[0].y - cities[cities.length - 1].y, 2));
+    return distance;
+  }
+
+  static void print() {
+    for (City c : cities) {
+      System.out.println(c.toString());
+    }
+    System.out.println(calcDistance());
   }
 
   public static void main(String[] args) {
     rnd = new Random();
     setup();
-    solve();
-    for (City c : cities) {
-      System.out.println(c.toString());
-    }
+    solve(10000);
+    System.out.println("Shortest path found:");
+    print();
   }
 }
 
