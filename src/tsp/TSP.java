@@ -28,6 +28,7 @@ public class TSP {
   }
 
   public static void main(String[] args) {
+    rnd = new Random();
     setup();
     solve();
     for (City c : cities) {
