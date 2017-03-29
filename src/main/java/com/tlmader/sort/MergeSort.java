@@ -1,3 +1,5 @@
+package com.tlmader.sort;
+
 import java.util.*;
 
 public class MergeSort {

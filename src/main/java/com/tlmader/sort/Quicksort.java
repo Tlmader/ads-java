@@ -1,3 +1,5 @@
+package com.tlmader.sort;
+
 import java.util.*;
 
 public class Quicksort {
@@ -11,8 +13,12 @@ public class Quicksort {
     for (int i = 0; i < nums.length; i++) {
       nums[i] = Integer.parseInt(strs[i]);
     }
-    nums = quicksort(nums, 0, nums.length - 1);
+    nums = quicksort(nums);
     System.out.println("Case #" + x + ": " + Arrays.toString(nums));
+  }
+
+  public static int[] quicksort(int [] nums) {
+    return quicksort(nums, 0, nums.length - 1);
   }
 
   public static int[] quicksort(int[] nums, int low, int high) {
@@ -40,7 +46,7 @@ public class Quicksort {
     if (low < j) {
       nums = quicksort(nums, low, j);
     }
-    if (i < high) {
+    if (high > i) {
       nums = quicksort(nums, i, high);
     }
     return nums;

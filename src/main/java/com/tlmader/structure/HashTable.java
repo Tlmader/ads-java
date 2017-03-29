@@ -1,3 +1,5 @@
+package com.tlmader.structure;
+
 import java.util.*;
 
 public class HashTable {

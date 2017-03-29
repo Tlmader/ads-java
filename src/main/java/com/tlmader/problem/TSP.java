@@ -1,3 +1,5 @@
+package com.tlmader.problem;
+
 import java.util.Random;
 
 @SuppressWarnings("WrongPackageStatement")
