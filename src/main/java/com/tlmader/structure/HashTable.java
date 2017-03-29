@@ -1,6 +1,6 @@
 package com.tlmader.structure;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class HashTable {
 

@@ -1,4 +1,4 @@
-//import java.util.*;
+package com.tlmader.structure;//import java.util.*;
 //
 //public class SplayTree {
 //
